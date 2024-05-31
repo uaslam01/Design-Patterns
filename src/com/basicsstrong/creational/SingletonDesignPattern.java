@@ -19,11 +19,16 @@ public class SingletonDesignPattern {
 		obj.setVal(20);
 		
 		EagerSingleton obj2 = readFile("myFile.bin");
+		obj.setVal(30);
+		saveToFile(obj, "myFile.bin");
+
+		EagerSingleton obj33 = readFile("myFile.bin");
 		
 		System.out.println(obj.getVal());
 		
 		System.out.println(obj2.getVal());
-		
+		System.out.println(obj33.getVal());
+
 		Constructor cons = obj.getClass().getDeclaredConstructor(new Class[0]);
 		
 		cons.setAccessible(true);
@@ -34,6 +39,10 @@ public class SingletonDesignPattern {
 			System.out.println("Both are same");
 		}else
 		System.out.println("Both are different");
+		obj.setVal(50);
+		System.out.println(obj.getVal());
+		System.out.println(obj3.getVal());
+
 		
 		EnumSingleton eSing = EnumSingleton.SINGLETON;
 		eSing.doStuff();
